@@ -1,7 +1,7 @@
 html,
 body {
   padding: 0;
-  margin: 0;
+  margin: 1rem 0 0 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -15,12 +15,44 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.mainBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imageBody {
+  width: 800px;
+}
+
+/*@media (prefers-color-scheme: dark) {*/
+/*  html {*/
+/*    color-scheme: dark;*/
+/*  }*/
+/*  body {*/
+/*    color: white;*/
+/*    background: black;*/
+/*  }*/
+/*}*/
+
+#chart {
+  background: #fff;
+  width: 60%;
+  margin: 1em auto;
+}
+
+.sprintFilter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sprintLeft {
+  float:left;
+  padding: 1rem;
+}
+
+.sprintRight {
+  float: right;
+  padding: 1rem;
 }
