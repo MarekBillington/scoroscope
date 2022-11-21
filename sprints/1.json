@@ -1,0 +1,9 @@
+{
+	"title": "U-turn at the next available intersection",
+	"retro": "Maybe we should tell our PO to stop injecting things, or at least take some stuff out. Wasn't the scrum master meant to do that?",
+	"graph": {
+		"link": "/images/1.png",
+		"height": 495,
+		"width": 1024
+	}
+}
