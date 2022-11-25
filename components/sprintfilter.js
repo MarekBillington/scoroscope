@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useEffect} from 'react';
 import Slider from '@mui/material/Slider';
 
-export default function SprintFilter ({property, icon, label, scale, onChange}) {
+const SprintFilter = ({property, icon, label, scale, onChange}) => {
+
 
     let max = 10 * scale
     let step = (max <= 20 ? 1 : 5)
@@ -22,4 +23,6 @@ export default function SprintFilter ({property, icon, label, scale, onChange}) 
             />
         </div>
     )
-}
+};
+
+export default SprintFilter;

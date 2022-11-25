@@ -7,12 +7,14 @@ import SprintFilter from "../../components/sprintfilter"
 
 const SprintBuilder = () => {
 
-    const [commitment, setCommitment] = useState(['commitment', 10, 10, 10]);
-    const [burnup, setBurnup] = useState(['burnup', 0, 5, 8]);
+    const [commitment, setCommitment] = useState(['commitment', 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
+    const [burnup, setBurnup] = useState(['burnup', 0, 0, 2, 4, 4, 4, 7, 9, 9, 10]);
+    const [chart, setChart] = useState(c3.chart)
+    const [filterVars, setFilterVars] = useState({remote: 5, devMeetings: 4, tableTennis: 10, injections: 50, codeReview: 5, cycleSteps: 50, overestimated: 5, underestimated: 5})
 
     useEffect(() => {
         // 2 week sprint by default - mon to fri
-        c3.generate({
+        setChart(c3.generate({
             bindto: "#chart",
             data: {
                 columns: [
@@ -23,8 +25,13 @@ const SprintBuilder = () => {
                     commitment: 'step',
                     burnup: 'step',
                 },
+                axis: {
+                    y: {
+                        min: 0
+                    }
+                }
             },
-        });
+        }))
     }, []);
 
     function recalculate(event, newValue) {
@@ -32,8 +39,20 @@ const SprintBuilder = () => {
         if (property === null) {
             return;
         }
-        generateCommitment(property, newValue)
-        generateBurnup(property, newValue)
+
+        console.log("hi")
+        setCommitment(generateCommitment(commitment, property, newValue, filterVars[property]))
+        setBurnup(generateBurnup(burnup, property, newValue, filterVars[property], commitment[commitment.length - 1]))
+        setFilterVars({
+            ...filterVars,
+            [property]: newValue
+        })
+        chart.load({
+            columns: [
+                commitment,
+                burnup,
+            ]
+        })
     }
 
     return (
