@@ -41,16 +41,18 @@ const SprintBuilder = () => {
         }
 
         console.log("hi")
-        setCommitment(generateCommitment(commitment, property, newValue, filterVars[property]))
-        setBurnup(generateBurnup(burnup, property, newValue, filterVars[property], commitment[commitment.length - 1]))
+        let newComm = generateCommitment(commitment, property, newValue, filterVars[property])
+        setCommitment(newComm)
+        let newBurn = generateBurnup(burnup, property, newValue, filterVars[property], commitment[commitment.length - 1])
+        setBurnup(newBurn)
         setFilterVars({
             ...filterVars,
             [property]: newValue
         })
         chart.load({
             columns: [
-                commitment,
-                burnup,
+                newComm,
+                newBurn,
             ]
         })
     }

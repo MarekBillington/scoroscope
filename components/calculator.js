@@ -1,5 +1,12 @@
-
-
+/**
+ * Generates the commitment line for the
+ *
+ * @param current
+ * @param property
+ * @param newValue
+ * @param prevValue
+ * @returns Array
+ */
 export function generateCommitment(current, property, newValue, prevValue) {
 
     let newArr = current.map((e, key) => {
